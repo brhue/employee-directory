@@ -1,6 +1,22 @@
+import { useState } from 'react';
+import EmployeeSearch from "./EmployeeSearch";
+
 export default function EmployeeTable({ employees, handleClick }) {
+  const [filterQuery, setFilterQuery] = useState('');
+
+  function handleInput(e) {
+    const query = e.currentTarget.value;
+    setFilterQuery(query);
+  }
+
+  const filteredEmployees = employees.filter(employee => {
+    const fullName = `${employee.name.first} ${employee.name.last}`.toLowerCase();
+    return fullName.includes(filterQuery);
+  });
+
   return (
     <>
+      <EmployeeSearch handleInput={handleInput} />
       <table>
         <thead>
           <tr>
@@ -21,7 +37,7 @@ export default function EmployeeTable({ employees, handleClick }) {
           </tr>
         </thead>
         <tbody>
-          {employees.map((employee, i) => (
+          {filteredEmployees.map((employee, i) => (
             // TODO: Use a better key!
             <tr key={i}>
               <td>
