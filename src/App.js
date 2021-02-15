@@ -17,6 +17,16 @@ function App() {
             return 0;
           }
         });
+      } else if (sortKey === "dob") {
+        toSort.sort((first, second) => {
+          if (first.dob.date < second.dob.date) {
+            return -direction;
+          } else if (first.dob.date > second.dob.date) {
+            return direction;
+          } else {
+            return 0;
+          }
+        });
       }
       return toSort;
     });
