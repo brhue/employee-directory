@@ -23,9 +23,11 @@ export default function EmployeeTable({ employees, handleClick }) {
             <th>Image</th>
             <th
               data-dir={1}
+              data-symbol="▼"
               onClick={(e) => {
                 const direction = e.currentTarget.getAttribute("data-dir");
                 e.currentTarget.setAttribute("data-dir", -direction);
+                e.currentTarget.setAttribute("data-symbol", direction === "1" ? "▼" : "▲");
                 handleClick("name", direction);
               }}
             >
