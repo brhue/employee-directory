@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState, useEffect} from 'react';
+import EmployeeTable from './components/EmployeeTable';
 
 function App() {
+  const [employees, setEmployees] = useState([]);
+
+  useEffect(() => {
+
+    async function getEmployees() {
+      try {
+      const response = await fetch('https://randomuser.me/api/?results=10');
+      const data = await response.json();
+      setEmployees(data.results);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    getEmployees();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Hi!</h1>
+      <EmployeeTable employees={employees} />
     </div>
   );
 }
