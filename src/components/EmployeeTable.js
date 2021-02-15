@@ -1,13 +1,20 @@
-export default function EmployeeTable({ employees }) {
+export default function EmployeeTable({ employees, handleClick }) {
   return (
     <>
       <table>
         <thead>
           <tr>
             <th>Image</th>
-            <th onClick={() => {
-              console.log('clicked name heading')
-            }}>Name</th>
+            <th
+              data-dir={1}
+              onClick={(e) => {
+                const direction = e.currentTarget.getAttribute("data-dir");
+                e.currentTarget.setAttribute("data-dir", -direction);
+                handleClick("name", direction);
+              }}
+            >
+              Name
+            </th>
             <th>Phone</th>
             <th>Email</th>
             <th>DOB</th>

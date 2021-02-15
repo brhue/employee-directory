@@ -1,16 +1,33 @@
-import {useState, useEffect} from 'react';
-import EmployeeTable from './components/EmployeeTable';
+import { useState, useEffect } from "react";
+import EmployeeTable from "./components/EmployeeTable";
 
 function App() {
   const [employees, setEmployees] = useState([]);
 
-  useEffect(() => {
+  function handleClick(sortKey, direction) {
+    setEmployees((currentEmployees) => {
+      const toSort = [...currentEmployees];
+      if (sortKey === "name") {
+        toSort.sort((first, second) => {
+          if (first.name.last < second.name.last) {
+            return -direction;
+          } else if (first.name.last > second.name.last) {
+            return direction;
+          } else {
+            return 0;
+          }
+        });
+      }
+      return toSort;
+    });
+  }
 
+  useEffect(() => {
     async function getEmployees() {
       try {
-      const response = await fetch('https://randomuser.me/api/?results=10');
-      const data = await response.json();
-      setEmployees(data.results);
+        const response = await fetch("https://randomuser.me/api/?results=10");
+        const data = await response.json();
+        setEmployees(data.results);
       } catch (error) {
         console.error(error);
       }
@@ -22,7 +39,7 @@ function App() {
   return (
     <div>
       <h1>Hi!</h1>
-      <EmployeeTable employees={employees} />
+      <EmployeeTable employees={employees} handleClick={handleClick} />
     </div>
   );
 }
