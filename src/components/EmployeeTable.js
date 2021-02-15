@@ -17,7 +17,7 @@ export default function EmployeeTable({ employees, handleClick }) {
   return (
     <>
       <EmployeeSearch handleInput={handleInput} />
-      <table>
+      <table className="w-100">
         <thead>
           <tr>
             <th>Image</th>

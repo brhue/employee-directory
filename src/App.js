@@ -25,7 +25,7 @@ function App() {
   useEffect(() => {
     async function getEmployees() {
       try {
-        const response = await fetch("https://randomuser.me/api/?results=10");
+        const response = await fetch("https://randomuser.me/api/?results=50");
         const data = await response.json();
         setEmployees(data.results);
       } catch (error) {
@@ -37,8 +37,9 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h1>Hi!</h1>
+    <div className="text-center">
+      <h1>Employee Directory</h1>
+      <p>Click on a heading to sort by column or use the search input to filter by name.</p>
       <EmployeeTable employees={employees} handleClick={handleClick} />
     </div>
   );
