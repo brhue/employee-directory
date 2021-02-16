@@ -3,6 +3,7 @@
 ![Employee directory app](./assets/screenshot.png)
 ## Description
 A simple web app that displays a table of relevant employee information built to learn and practice react.
+Check it out [live](https://brhue.github.io/employee-directory/).
 
 ## Table of Contents
 * [Installation](#installation)
@@ -36,4 +37,4 @@ No tests.
 ```
 
 ## Questions
-If you have any questions you can reach out to me on [Github](https://github.com/brhue) or shoot me an [email](mailto:).
+If you have any questions you can reach out to me on [Github](https://github.com/brhue).
