@@ -48,9 +48,13 @@ function App() {
 
   return (
     <div className="text-center">
-      <h1>Employee Directory</h1>
-      <p>Click on a heading to sort by column or use the search input to filter by name.</p>
-      <EmployeeTable employees={employees} handleClick={handleClick} />
+      <header className="py-1">
+        <h1>Employee Directory</h1>
+        <p>Click on a heading to sort by column or use the search input to filter by name.</p>
+      </header>
+      <div className="container">
+        <EmployeeTable employees={employees} handleClick={handleClick} />
+      </div>
     </div>
   );
 }
