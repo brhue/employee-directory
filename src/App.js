@@ -9,13 +9,8 @@ function App() {
       const toSort = [...currentEmployees];
       if (sortKey === "name") {
         toSort.sort((first, second) => {
-          if (first.name.last < second.name.last) {
-            return -direction;
-          } else if (first.name.last > second.name.last) {
-            return direction;
-          } else {
-            return 0;
-          }
+          // direction reverses the sort depending on if it's 1 or -1.
+          return first.name.first.localeCompare(second.name.first) * direction;
         });
       } else if (sortKey === "dob") {
         toSort.sort((first, second) => {
